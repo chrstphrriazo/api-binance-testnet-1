@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Search for Symbol:</h3>
+      <form [formGroup]="orderbookForm"
+            (ngSubmit)="sendOrderBook(orderbookForm.value)">
+        <div class="form-group">
+          <input class="form-control"
+                 type="text"
+                 id="symbolSPT"
+                 placeholder="Please input a Symbol"
+                 formControlName="symbol" />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-md my-4">
+            Search for the token
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Token Details:</h3>
+      <div class="text-center" [formGroup]="orderbookForm" *ngFor="let data of orderbookData; let i = index">
+        {{ orderbookForm.value.symbol}}
+        <div *ngFor="let dataa of data; let j = index">
+          | {{dataa}} |
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
